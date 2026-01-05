@@ -1,0 +1,167 @@
+.deposits-list {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.deposits-list h2 {
+  margin: 0 0 20px;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.deposits-list h3 {
+  margin: 0 0 12px;
+  color: #a0a0a0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.loading,
+.empty {
+  text-align: center;
+  color: #6a6a8a;
+  padding: 40px 20px;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.deposit-card {
+  background: #0d1321;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.deposit-card.unlocked {
+  border-color: #4ade8044;
+}
+
+.deposit-card.locked {
+  border-color: #f59e0b44;
+}
+
+.deposit-card.withdrawn {
+  opacity: 0.6;
+  border-color: #6a6a8a44;
+}
+
+.deposit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.deposit-id {
+  color: #6a6a8a;
+  font-size: 0.85rem;
+}
+
+.status {
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.status.unlocked {
+  background: #4ade8022;
+  color: #4ade80;
+}
+
+.status.locked {
+  background: #f59e0b22;
+  color: #f59e0b;
+}
+
+.status.withdrawn {
+  background: #6a6a8a22;
+  color: #6a6a8a;
+}
+
+.deposit-amount {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.deposit-details {
+  margin-bottom: 16px;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: #a0a0a0;
+}
+
+.detail .label {
+  color: #6a6a8a;
+}
+
+.time-remaining .green {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.time-remaining .orange {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.deposit-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.withdraw-btn {
+  flex: 1;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  color: #000;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.withdraw-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.emergency-btn {
+  flex: 1;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.emergency-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.withdraw-btn:disabled,
+.emergency-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
