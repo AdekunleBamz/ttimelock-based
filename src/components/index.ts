@@ -7,3 +7,4 @@ export { ToastContainer, useToast } from "./Toast";
 export type { ToastMessage, ToastType } from "./Toast";
 export { StatsCard } from "./StatsCard";
 export { SavingsSummary } from "./SavingsSummary";
+export { VaultStats } from "./VaultStats";

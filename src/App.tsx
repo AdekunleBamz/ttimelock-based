@@ -8,6 +8,7 @@ import {
   SavingsSummary,
   ToastContainer,
   useToast,
+  VaultStats,
 } from "./components";
 import { useEffect, useCallback, useMemo } from "react";
 import "./App.css";
@@ -148,6 +149,9 @@ function App() {
       <Header wallet={wallet} ethBalance={wallet.ethBalance} />
 
       <main className="main">
+        {/* Global Vault Stats - Always visible */}
+        <VaultStats />
+
         {!wallet.isConnected ? (
           <div className="welcome">
             <div className="welcome-content">
