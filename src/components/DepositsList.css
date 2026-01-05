@@ -1,14 +1,27 @@
 .deposits-list {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   border-radius: 16px;
-  padding: 24px;
+  padding: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid #2a2a4e;
+}
+
+@media (min-width: 768px) {
+  .deposits-list {
+    padding: 24px;
+  }
 }
 
 .deposits-list h2 {
   margin: 0 0 20px;
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+}
+
+@media (min-width: 768px) {
+  .deposits-list h2 {
+    font-size: 1.5rem;
+  }
 }
 
 .deposits-list h3 {

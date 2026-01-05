@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { BrowserProvider, JsonRpcSigner } from "ethers";
+import { BrowserProvider, JsonRpcSigner, formatEther } from "ethers";
 import { BASE_MAINNET } from "../config/contracts";
 
 declare global {
@@ -16,6 +16,7 @@ export function useWallet() {
   const [address, setAddress] = useState<string | null>(null);
   const [signer, setSigner] = useState<JsonRpcSigner | null>(null);
   const [chainId, setChainId] = useState<number | null>(null);
+  const [ethBalance, setEthBalance] = useState<string>("0");
   const [isConnecting, setIsConnecting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -86,7 +87,20 @@ export function useWallet() {
     setAddress(null);
     setSigner(null);
     setChainId(null);
+    setEthBalance("0");
   }, []);
+
+  // Refresh ETH balance
+  const refreshEthBalance = useCallback(async () => {
+    if (!signer || !address) return;
+    try {
+      const provider = signer.provider;
+      const balance = await provider.getBalance(address);
+      setEthBalance(formatEther(balance));
+    } catch (err) {
+      console.error("Failed to fetch ETH balance:", err);
+    }
+  }, [signer, address]);
 
   // Listen for account/chain changes
   useEffect(() => {
@@ -114,10 +128,18 @@ export function useWallet() {
     };
   }, [disconnect]);
 
+  // Fetch ETH balance on connect
+  useEffect(() => {
+    if (signer && address && chainId === BASE_MAINNET.chainId) {
+      refreshEthBalance();
+    }
+  }, [signer, address, chainId, refreshEthBalance]);
+
   return {
     address,
     signer,
     chainId,
+    ethBalance,
     isConnecting,
     isConnected: !!address,
     isCorrectChain,
@@ -125,5 +147,6 @@ export function useWallet() {
     connect,
     switchToBase,
     disconnect,
+    refreshEthBalance,
   };
 }

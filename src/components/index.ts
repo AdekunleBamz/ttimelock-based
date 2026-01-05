@@ -1,2 +1,9 @@
 export { DepositForm } from "./DepositForm";
 export { DepositsList } from "./DepositsList";
+export { Header } from "./Header";
+export { TokenBalances } from "./TokenBalances";
+export { LockOptionsDisplay } from "./LockOptionsDisplay";
+export { ToastContainer, useToast } from "./Toast";
+export type { ToastMessage, ToastType } from "./Toast";
+export { StatsCard } from "./StatsCard";
+export { SavingsSummary } from "./SavingsSummary";
