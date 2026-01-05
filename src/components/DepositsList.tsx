@@ -1,4 +1,4 @@
-import { DepositInfo } from "../hooks/useVault";
+import type { DepositInfo } from "../hooks/useVault";
 import "./DepositsList.css";
 
 interface DepositsListProps {
