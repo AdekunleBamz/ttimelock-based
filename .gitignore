@@ -25,3 +25,8 @@ dist-ssr
 
 # Functions folder - contains private keys
 functions/
+
+# Contract files - deployed separately
+contracts/
+contracts-v2/
+contracts-v3/
