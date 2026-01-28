@@ -1,0 +1,48 @@
+.copy-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.copy-field__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #f3f4f6;
+  font-size: 14px;
+  outline: none;
+}
+
+.copy-field__input::placeholder {
+  color: #6b7280;
+}
+
+.copy-field__button {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(0, 82, 255, 0.15);
+  color: #93c5fd;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-field__button:hover {
+  background: rgba(0, 82, 255, 0.25);
+}
+
+.copy-field__button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.copy-field__status {
+  font-size: 12px;
+  color: #10b981;
+}
