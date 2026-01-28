@@ -1,0 +1,21 @@
+.stat-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-icon { font-size: 24px; }
+
+.stat-content { display: flex; flex-direction: column; gap: 4px; }
+
+.stat-label { font-size: 13px; color: rgba(255, 255, 255, 0.6); }
+.stat-value { font-size: 24px; font-weight: 700; color: white; }
+
+.stat-trend { font-size: 12px; font-weight: 500; }
+.stat-trend-up { color: #10b981; }
+.stat-trend-down { color: #ef4444; }
+.stat-trend-neutral { color: rgba(255, 255, 255, 0.5); }
