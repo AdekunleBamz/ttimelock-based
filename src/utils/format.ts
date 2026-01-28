@@ -42,3 +42,35 @@ export function formatDuration(seconds: number): string {
   if (hours > 0) return `${hours}h ${minutes}m`;
   return `${minutes}m`;
 }
+
+  export function formatCompactNumber(value: number): string {
+    return new Intl.NumberFormat("en-US", {
+      notation: "compact",
+      maximumFractionDigits: 2,
+    }).format(value);
+  }
+
+  export function formatPercentage(value: number, decimals = 2): string {
+    return `${value.toFixed(decimals)}%`;
+  }
+
+  export function formatTokenAmount(
+    amount: number | string,
+    symbol = "USDC",
+    decimals = 2
+  ): string {
+    return `${formatCurrency(amount, decimals)} ${symbol}`;
+  }
+
+  export function formatTimeAgo(date: Date): string {
+    const diff = Date.now() - date.getTime();
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+
+    if (days > 0) return `${days}d ago`;
+    if (hours > 0) return `${hours}h ago`;
+    if (minutes > 0) return `${minutes}m ago`;
+    return `${seconds}s ago`;
+  }
