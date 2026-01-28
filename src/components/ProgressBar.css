@@ -1,0 +1,26 @@
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  background: linear-gradient(90deg, #4a9eff, #6bb3ff);
+}
+
+.progress-bar-fill.warning {
+  background: linear-gradient(90deg, #ff9f43, #ffbe76);
+}
+
+.progress-bar-fill.danger {
+  background: linear-gradient(90deg, #ff6b6b, #ee5253);
+}
+
+.progress-bar-fill.success {
+  background: linear-gradient(90deg, #4ade80, #22c55e);
+}
