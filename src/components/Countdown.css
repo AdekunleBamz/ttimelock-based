@@ -1,0 +1,27 @@
+.countdown {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px 16px;
+  border-radius: 8px;
+  min-width: 60px;
+}
+
+.countdown-unit span {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+}
+
+.countdown-unit small {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
