@@ -8,3 +8,6 @@ export type { ToastMessage, ToastType } from "./Toast";
 export { StatsCard } from "./StatsCard";
 export { SavingsSummary } from "./SavingsSummary";
 export { VaultStats } from "./VaultStats";
+export { LoadingSpinner } from "./LoadingSpinner";
+export { Tooltip } from "./Tooltip";
+export { DepositTimer } from "./DepositTimer";

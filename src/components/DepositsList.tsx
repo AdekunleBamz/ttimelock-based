@@ -1,4 +1,6 @@
 import type { DepositInfo } from "../hooks/useVault";
+import { Tooltip } from "./Tooltip";
+import { DepositTimer } from "./DepositTimer";
 import "./DepositsList.css";
 
 interface DepositsListProps {
@@ -27,21 +29,6 @@ export function DepositsList({
       hour: "2-digit",
       minute: "2-digit",
     });
-  };
-
-  const getTimeRemaining = (unlockTime: Date) => {
-    const now = new Date();
-    const diff = unlockTime.getTime() - now.getTime();
-
-    if (diff <= 0) return "Unlocked!";
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-    if (days > 0) return `${days}d ${hours}h remaining`;
-    if (hours > 0) return `${hours}h ${minutes}m remaining`;
-    return `${minutes}m remaining`;
   };
 
   if (isLoading) {
@@ -87,7 +74,7 @@ export function DepositsList({
                 <div className="detail time-remaining">
                   <span className="label">Status:</span>
                   <span className={deposit.isUnlocked ? "green" : "orange"}>
-                    {getTimeRemaining(deposit.unlockTime)}
+                    {deposit.isUnlocked ? "Ready to Withdraw" : <DepositTimer targetDate={deposit.unlockTime} />}
                   </span>
                 </div>
               </div>
@@ -102,23 +89,29 @@ export function DepositsList({
                     ✅ Withdraw
                   </button>
                 ) : (
-                  <button
-                    className="emergency-btn"
-                    onClick={() => {
-                      if (
-                        window.confirm(
-                          `Emergency withdraw will cost you 10% (${(
-                            parseFloat(deposit.principalFormatted) * 0.1
-                          ).toFixed(4)} USDC). Continue?`
-                        )
-                      ) {
-                        onEmergencyWithdraw(deposit.id);
-                      }
-                    }}
-                    disabled={txPending}
+                  <Tooltip
+                    content="10% of your principal will be deducted as a penalty."
+                    position="top"
                   >
-                    ⚠️ Emergency Withdraw (-10%)
-                  </button>
+                    <button
+                      className="emergency-btn"
+                      onClick={() => {
+                        if (
+                          window.confirm(
+                            `Emergency withdraw will cost you 10% (${(
+                              parseFloat(deposit.principalFormatted) * 0.1
+                            ).toFixed(4)} USDC). Continue?`
+                          )
+                        ) {
+                          onEmergencyWithdraw(deposit.id);
+                        }
+                      }}
+                      disabled={txPending}
+                      aria-label="Emergency withdraw with 10% penalty"
+                    >
+                      ⚠️ Emergency Withdraw
+                    </button>
+                  </Tooltip>
                 )}
               </div>
             </div>
