@@ -12,6 +12,7 @@ import {
   Footer,
 } from "./components";
 import { useEffect, useCallback, useMemo } from "react";
+import { playConnectSound } from "./utils";
 import "./App.css";
 
 function App() {
@@ -137,6 +138,7 @@ function App() {
   // Show connection toast
   useEffect(() => {
     if (wallet.isConnected && wallet.isCorrectChain) {
+      playConnectSound();
       toast.success(
         "Wallet Connected",
         `Connected to ${wallet.address?.slice(0, 6)}...${wallet.address?.slice(-4)}`
