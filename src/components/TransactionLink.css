@@ -1,0 +1,22 @@
+.transaction-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 8px;
+  color: #3b82f6;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.transaction-link:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: #3b82f6;
+}
+
+.tx-label { font-weight: 500; }
+.tx-hash { font-family: monospace; opacity: 0.8; }
+.tx-icon { font-size: 12px; }
