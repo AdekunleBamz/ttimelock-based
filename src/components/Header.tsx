@@ -1,13 +1,9 @@
+import { useState } from "react";
+import { Tooltip } from "./Tooltip";
 import "./Header.css";
 
 interface WalletInfo {
-  address: string | null;
-  isConnected: boolean;
-  isConnecting: boolean;
-  isCorrectChain: boolean;
-  error: string | null;
-  connect: () => Promise<void>;
-  disconnect: () => void;
+// ... existing code ...
   switchToBase: () => Promise<void>;
 }
 
@@ -17,68 +13,41 @@ interface HeaderProps {
 }
 
 export function Header({ wallet, ethBalance }: HeaderProps) {
-  return (
-    <header className="header">
-      <div className="logo">
-        <span className="logo-icon">🔐</span>
-        <span className="logo-text">TimeVault</span>
-      </div>
+  const [copySuccess, setCopySuccess] = useState(false);
 
-      <div className="wallet-section">
-        {!wallet.isConnected ? (
-          <button
-            className="connect-btn"
-            onClick={wallet.connect}
-            disabled={wallet.isConnecting}
-          >
-            {wallet.isConnecting ? (
-              <>
-                <span className="spinner"></span>
-                Connecting...
-              </>
-            ) : (
-              <>
-                <span className="wallet-icon">🦊</span>
-                Connect Wallet
-              </>
-            )}
-          </button>
-        ) : !wallet.isCorrectChain ? (
-          <button className="switch-btn" onClick={wallet.switchToBase}>
-            <span className="warning-icon">⚠️</span>
-            Switch to Base
-          </button>
-        ) : (
-          <div className="wallet-info">
-            <div className="network-badge">
-              <span className="network-dot"></span>
-              <span>Base</span>
-            </div>
-            {ethBalance && (
-              <div className="eth-balance">
-                <span className="eth-icon">Ξ</span>
-                <span>{parseFloat(ethBalance).toFixed(4)}</span>
-              </div>
-            )}
+  const handleCopy = () => {
+    if (wallet.address) {
+      navigator.clipboard.writeText(wallet.address);
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 2000);
+    }
+  };
+
+  return (
+// ... existing code ...
             <div className="address-badge">
               <span className="address">
                 {wallet.address?.slice(0, 6)}...{wallet.address?.slice(-4)}
               </span>
-              <button
-                className="copy-btn"
-                onClick={() => navigator.clipboard.writeText(wallet.address || "")}
-                title="Copy address"
-              >
-                📋
-              </button>
+              <Tooltip content={copySuccess ? "Copied!" : "Copy address"} position="bottom">
+                <button
+                  className="copy-btn"
+                  onClick={handleCopy}
+                  aria-label="Copy wallet address"
+                >
+                  {copySuccess ? "✅" : "📋"}
+                </button>
+              </Tooltip>
             </div>
-            <button
-              className="disconnect-btn"
-              onClick={wallet.disconnect}
-              title="Disconnect"
-            >
-              ✕
-            </button>
+            <Tooltip content="Disconnect wallet" position="bottom">
+              <button
+                className="disconnect-btn"
+                onClick={wallet.disconnect}
+                aria-label="Disconnect wallet"
+              >
+                ✕
+              </button>
+            </Tooltip>
           </div>
         )}
       </div>

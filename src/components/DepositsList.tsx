@@ -99,29 +99,43 @@ export function DepositsList({
                     onClick={() => onWithdraw(deposit.id)}
                     disabled={txPending}
                   >
+                    import type { DepositInfo } from "../hooks/useVault";
+import { Tooltip } from "./Tooltip";
+import "./DepositsList.css";
+
+interface DepositsListProps {
+// ... existing code ...
                     ✅ Withdraw
                   </button>
                 ) : (
-                  <button
-                    className="emergency-btn"
-                    onClick={() => {
-                      if (
-                        window.confirm(
-                          `Emergency withdraw will cost you 10% (${(
-                            parseFloat(deposit.principalFormatted) * 0.1
-                          ).toFixed(4)} USDC). Continue?`
-                        )
-                      ) {
-                        onEmergencyWithdraw(deposit.id);
-                      }
-                    }}
-                    disabled={txPending}
+                  <Tooltip 
+                    content="10% of your principal will be deducted as a penalty." 
+                    position="top"
                   >
-                    ⚠️ Emergency Withdraw (-10%)
-                  </button>
+                    <button
+                      className="emergency-btn"
+                      onClick={() => {
+                        if (
+                          window.confirm(
+                            `Emergency withdraw will cost you 10% (${(
+                              parseFloat(deposit.principalFormatted) * 0.1
+                            ).toFixed(4)} USDC). Continue?`
+                          )
+                        ) {
+                          onEmergencyWithdraw(deposit.id);
+                        }
+                      }}
+                      disabled={txPending}
+                      aria-label="Emergency withdraw with 10% penalty"
+                    >
+                      ⚠️ Emergency Withdraw
+                    </button>
+                  </Tooltip>
                 )}
               </div>
             </div>
+// ... existing code ...
+}
           ))}
         </div>
       )}
