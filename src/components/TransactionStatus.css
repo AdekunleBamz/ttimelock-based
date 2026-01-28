@@ -1,0 +1,110 @@
+.transaction-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.transaction-status__icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.transaction-status__icon--pending {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.transaction-status__icon--success {
+  color: var(--success-color, #10b981);
+}
+
+.transaction-status__icon--error {
+  color: var(--error-color, #ef4444);
+}
+
+.transaction-status__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary, #fff);
+  margin-bottom: 0.5rem;
+}
+
+.transaction-status__message {
+  color: var(--text-secondary, #9ca3af);
+  margin-bottom: 1.5rem;
+  max-width: 300px;
+}
+
+.transaction-status__hash {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--input-bg, rgba(255, 255, 255, 0.05));
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 0.875rem;
+  color: var(--text-secondary, #9ca3af);
+  margin-bottom: 1rem;
+}
+
+.transaction-status__hash-link {
+  color: var(--primary-color, #3b82f6);
+  text-decoration: none;
+}
+
+.transaction-status__hash-link:hover {
+  text-decoration: underline;
+}
+
+.transaction-status__actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.transaction-status__btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.transaction-status__btn--primary {
+  background: var(--primary-color, #3b82f6);
+  border: none;
+  color: white;
+}
+
+.transaction-status__btn--secondary {
+  background: transparent;
+  border: 1px solid var(--border-color, #374151);
+  color: var(--text-secondary, #9ca3af);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.95); }
+}
+
+.transaction-status__progress {
+  width: 200px;
+  height: 4px;
+  background: var(--border-color, #374151);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.transaction-status__progress-bar {
+  height: 100%;
+  background: var(--primary-color, #3b82f6);
+  animation: indeterminate 1.5s ease-in-out infinite;
+}
+
+@keyframes indeterminate {
+  0% { transform: translateX(-100%); width: 30%; }
+  50% { transform: translateX(100%); width: 30%; }
+  100% { transform: translateX(300%); width: 30%; }
+}
