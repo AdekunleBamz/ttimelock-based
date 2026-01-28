@@ -1,0 +1,26 @@
+.help-text {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  margin: 8px 0;
+  padding: 10px 12px;
+  border-radius: 6px;
+}
+
+.help-icon { flex-shrink: 0; }
+
+.help-text-info {
+  background: rgba(59, 130, 246, 0.1);
+  color: #93c5fd;
+}
+
+.help-text-warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: #fcd34d;
+}
+
+.help-text-error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #fca5a5;
+}
