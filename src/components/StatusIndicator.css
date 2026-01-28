@@ -1,0 +1,21 @@
+.status-indicator { display: flex; align-items: center; gap: 8px; }
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.status-online { background: #10b981; }
+.status-offline { background: #6b7280; }
+.status-pending { background: #f59e0b; }
+.status-error { background: #ef4444; }
+
+.status-dot.pulse { animation: pulse 2s ease-in-out infinite; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 currentColor; }
+  50% { opacity: 0.8; box-shadow: 0 0 0 4px transparent; }
+}
+
+.status-label { font-size: 14px; color: rgba(255, 255, 255, 0.8); }
