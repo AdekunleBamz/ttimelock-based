@@ -1,0 +1,16 @@
+.token-amount {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.amount-value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.amount-symbol {
+  font-size: 0.85em;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
