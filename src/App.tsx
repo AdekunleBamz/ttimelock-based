@@ -12,6 +12,7 @@ import {
   Footer,
 } from "./components";
 import { useEffect, useCallback, useMemo } from "react";
+import { triggerConfetti } from "./utils";
 import "./App.css";
 
 function App() {
@@ -77,6 +78,7 @@ function App() {
           "Deposit Successful!",
           `Locked ${amount} USDC for ${Math.floor(duration / 86400)} days`
         );
+        triggerConfetti();
       } catch (err) {
         toast.removeToast(toastId);
         const message = err instanceof Error ? err.message : "Transaction failed";
