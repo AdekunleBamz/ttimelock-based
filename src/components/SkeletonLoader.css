@@ -1,0 +1,160 @@
+.skeleton-loader {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.06) 25%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.06) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-pulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Preset sizes */
+.skeleton-loader--text {
+  height: 16px;
+  width: 100%;
+}
+
+.skeleton-loader--heading {
+  height: 24px;
+  width: 60%;
+}
+
+.skeleton-loader--title {
+  height: 32px;
+  width: 40%;
+}
+
+.skeleton-loader--avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.skeleton-loader--avatar-lg {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.skeleton-loader--button {
+  height: 44px;
+  width: 120px;
+  border-radius: 12px;
+}
+
+.skeleton-loader--card {
+  height: 160px;
+  width: 100%;
+  border-radius: 16px;
+}
+
+.skeleton-loader--input {
+  height: 48px;
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* Skeleton Group */
+.skeleton-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeleton-group--horizontal {
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Skeleton Card Preset */
+.skeleton-deposit-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.skeleton-deposit-card__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.skeleton-deposit-card__amount {
+  height: 28px;
+  width: 120px;
+}
+
+.skeleton-deposit-card__status {
+  height: 28px;
+  width: 80px;
+  border-radius: 14px;
+}
+
+.skeleton-deposit-card__details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.skeleton-deposit-card__detail {
+  height: 40px;
+}
+
+.skeleton-deposit-card__progress {
+  height: 8px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.skeleton-deposit-card__actions {
+  display: flex;
+  gap: 12px;
+}
+
+.skeleton-deposit-card__button {
+  flex: 1;
+  height: 44px;
+  border-radius: 12px;
+}
+
+/* Skeleton Stats */
+.skeleton-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.skeleton-stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.skeleton-stat-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.skeleton-stat-card__value {
+  height: 28px;
+  width: 80%;
+  margin-bottom: 8px;
+}
+
+.skeleton-stat-card__label {
+  height: 14px;
+  width: 60%;
+}
