@@ -1,4 +1,8 @@
+import React, { useState } from "react";
 import type { DepositInfo } from "../hooks/useVault";
+import { Tooltip } from "./Tooltip";
+import { DepositTimer } from "./DepositTimer";
+import { Modal } from "./Modal";
 import "./DepositsList.css";
 
 interface DepositsListProps {
@@ -16,6 +20,8 @@ export function DepositsList({
   onWithdraw,
   onEmergencyWithdraw,
 }: DepositsListProps) {
+  const [modalData, setModalData] = useState<{ id: number; penalty: string } | null>(null);
+
   const activeDeposits = deposits.filter((d) => !d.withdrawn);
   const withdrawnDeposits = deposits.filter((d) => d.withdrawn);
 
@@ -29,19 +35,15 @@ export function DepositsList({
     });
   };
 
-  const getTimeRemaining = (unlockTime: Date) => {
-    const now = new Date();
-    const diff = unlockTime.getTime() - now.getTime();
+  const handleEmergencyClick = (depositId: number, principal: string) => {
+    const penalty = (parseFloat(principal) * 0.1).toFixed(4);
+    setModalData({ id: depositId, penalty });
+  };
 
-    if (diff <= 0) return "Unlocked!";
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-    if (days > 0) return `${days}d ${hours}h remaining`;
-    if (hours > 0) return `${hours}h ${minutes}m remaining`;
-    return `${minutes}m remaining`;
+  const confirmEmergencyWithdraw = () => {
+    if (modalData) {
+      onEmergencyWithdraw(modalData.id);
+    }
   };
 
   if (isLoading) {
@@ -87,7 +89,7 @@ export function DepositsList({
                 <div className="detail time-remaining">
                   <span className="label">Status:</span>
                   <span className={deposit.isUnlocked ? "green" : "orange"}>
-                    {getTimeRemaining(deposit.unlockTime)}
+                    {deposit.isUnlocked ? "Ready to Withdraw" : <DepositTimer targetDate={deposit.unlockTime} />}
                   </span>
                 </div>
               </div>
@@ -102,23 +104,19 @@ export function DepositsList({
                     ✅ Withdraw
                   </button>
                 ) : (
-                  <button
-                    className="emergency-btn"
-                    onClick={() => {
-                      if (
-                        window.confirm(
-                          `Emergency withdraw will cost you 10% (${(
-                            parseFloat(deposit.principalFormatted) * 0.1
-                          ).toFixed(4)} USDC). Continue?`
-                        )
-                      ) {
-                        onEmergencyWithdraw(deposit.id);
-                      }
-                    }}
-                    disabled={txPending}
+                  <Tooltip
+                    content="10% of your principal will be deducted as a penalty."
+                    position="top"
                   >
-                    ⚠️ Emergency Withdraw (-10%)
-                  </button>
+                    <button
+                      className="emergency-btn"
+                      onClick={() => handleEmergencyClick(deposit.id, deposit.principalFormatted)}
+                      disabled={txPending}
+                      aria-label="Emergency withdraw with 10% penalty"
+                    >
+                      ⚠️ Emergency Withdraw
+                    </button>
+                  </Tooltip>
                 )}
               </div>
             </div>
@@ -140,6 +138,22 @@ export function DepositsList({
           ))}
         </div>
       )}
+
+      <Modal
+        isOpen={!!modalData}
+        onClose={() => setModalData(null)}
+        title="⚠️ Confirm Emergency Withdraw"
+        confirmLabel="Yes, Withdraw (Pay Penalty)"
+        isDanger={true}
+        onConfirm={confirmEmergencyWithdraw}
+      >
+        <p>You are about to withdraw funds before the lock period is over.</p>
+        <div style={{ margin: "20px 0", padding: "15px", background: "rgba(255, 107, 107, 0.1)", borderRadius: "8px", border: "1px solid rgba(255, 107, 107, 0.3)" }}>
+          <p style={{ margin: "0 0 5px 0", color: "#ff6b6b" }}><strong>Penalty Applied: 10%</strong></p>
+          <p style={{ margin: 0 }}>Penalty Amount: <strong>{modalData?.penalty} USDC</strong></p>
+        </div>
+        <p>Are you sure you want to proceed?</p>
+      </Modal>
     </div>
   );
 }

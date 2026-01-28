@@ -8,3 +8,4 @@ export type { ToastMessage, ToastType } from "./Toast";
 export { StatsCard } from "./StatsCard";
 export { SavingsSummary } from "./SavingsSummary";
 export { VaultStats } from "./VaultStats";
+export { Modal } from "./Modal";
