@@ -1,0 +1,84 @@
+.time-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.time-picker__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary, #9ca3af);
+}
+
+.time-picker__options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 0.5rem;
+}
+
+.time-picker__option {
+  padding: 0.75rem;
+  background: var(--input-bg, rgba(255, 255, 255, 0.05));
+  border: 2px solid var(--border-color, #374151);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.time-picker__option:hover {
+  border-color: var(--primary-color, #3b82f6);
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.time-picker__option--selected {
+  border-color: var(--primary-color, #3b82f6);
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.time-picker__option-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary, #fff);
+}
+
+.time-picker__option-unit {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-secondary, #9ca3af);
+  margin-top: 0.25rem;
+}
+
+.time-picker__custom {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.time-picker__custom-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: var(--input-bg, rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--border-color, #374151);
+  border-radius: 8px;
+  color: var(--text-primary, #fff);
+  font-size: 1rem;
+}
+
+.time-picker__custom-input:focus {
+  outline: none;
+  border-color: var(--primary-color, #3b82f6);
+}
+
+.time-picker__selected-info {
+  padding: 0.75rem;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: var(--text-secondary, #9ca3af);
+}
+
+.time-picker__selected-info strong {
+  color: var(--primary-color, #3b82f6);
+}
