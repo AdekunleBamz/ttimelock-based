@@ -12,7 +12,7 @@ import {
   Footer,
 } from "./components";
 import { useEffect, useCallback, useMemo } from "react";
-import { triggerConfetti } from "./utils";
+import { playConnectSound } from "./utils";
 import "./App.css";
 
 function App() {
@@ -78,7 +78,6 @@ function App() {
           "Deposit Successful!",
           `Locked ${amount} USDC for ${Math.floor(duration / 86400)} days`
         );
-        triggerConfetti();
       } catch (err) {
         toast.removeToast(toastId);
         const message = err instanceof Error ? err.message : "Transaction failed";
@@ -139,6 +138,7 @@ function App() {
   // Show connection toast
   useEffect(() => {
     if (wallet.isConnected && wallet.isCorrectChain) {
+      playConnectSound();
       toast.success(
         "Wallet Connected",
         `Connected to ${wallet.address?.slice(0, 6)}...${wallet.address?.slice(-4)}`

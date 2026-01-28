@@ -1,1 +1,1 @@
-export { triggerConfetti } from "./confetti";
+export { playConnectSound, playErrorSound } from "./sound";
