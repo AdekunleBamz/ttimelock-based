@@ -8,5 +8,4 @@ export type { ToastMessage, ToastType } from "./Toast";
 export { StatsCard } from "./StatsCard";
 export { SavingsSummary } from "./SavingsSummary";
 export { VaultStats } from "./VaultStats";
-export { Footer } from "./Footer";
-export { ErrorBoundary } from "./ErrorBoundary";
+export { EmptyState } from "./EmptyState";

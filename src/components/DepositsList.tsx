@@ -3,6 +3,7 @@ import type { DepositInfo } from "../hooks/useVault";
 import { Tooltip } from "./Tooltip";
 import { DepositTimer } from "./DepositTimer";
 import { Modal } from "./Modal";
+import { EmptyState } from "./EmptyState";
 import "./DepositsList.css";
 
 interface DepositsListProps {
@@ -60,7 +61,13 @@ export function DepositsList({
       <h2>📦 Your Deposits</h2>
 
       {activeDeposits.length === 0 && withdrawnDeposits.length === 0 && (
-        <div className="empty">No deposits yet. Start saving!</div>
+        <EmptyState
+          icon="🌱"
+          title="Start Your Savings Journey"
+          description="You haven't made any deposits yet. Lock your USDC to build discipline and secure your future."
+          actionLabel="Create Deposit"
+          onAction={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        />
       )}
 
       {activeDeposits.length > 0 && (
