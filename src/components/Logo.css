@@ -1,0 +1,17 @@
+.logo { display: flex; align-items: center; gap: 8px; }
+
+.logo-sm .logo-icon { font-size: 20px; }
+.logo-md .logo-icon { font-size: 28px; }
+.logo-lg .logo-icon { font-size: 40px; }
+
+.logo-sm .logo-text { font-size: 16px; }
+.logo-md .logo-text { font-size: 20px; }
+.logo-lg .logo-text { font-size: 28px; }
+
+.logo-text {
+  font-weight: 700;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
