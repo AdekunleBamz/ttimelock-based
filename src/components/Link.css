@@ -1,0 +1,15 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.link-default { color: #3b82f6; }
+.link-default:hover { color: #60a5fa; }
+
+.link-muted { color: rgba(255, 255, 255, 0.6); }
+.link-muted:hover { color: white; }
+
+.link-external { font-size: 12px; }
