@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { LOCK_DURATIONS, MIN_DEPOSIT } from "../config/contracts";
+import { Tooltip } from "./Tooltip";
 import "./DepositForm.css";
 
 interface DepositFormProps {
@@ -76,7 +77,9 @@ export function DepositForm({ usdcBalance, txPending, onDeposit }: DepositFormPr
             <span>{amountNum.toFixed(2)} USDC</span>
           </div>
           <div className="summary-row fee">
-            <span>Creator Fee (0.5%):</span>
+            <Tooltip content="A 0.5% fee is allocated to the project treasury to support development." position="top">
+              <span className="fee-label">Creator Fee (0.5%):</span>
+            </Tooltip>
             <span>-{fee.toFixed(4)} USDC</span>
           </div>
           <div className="summary-row net">
