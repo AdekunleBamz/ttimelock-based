@@ -9,6 +9,7 @@ import {
   ToastContainer,
   useToast,
   VaultStats,
+  Footer,
 } from "./components";
 import { useEffect, useCallback, useMemo } from "react";
 import "./App.css";
@@ -255,29 +256,7 @@ function App() {
         )}
       </main>
 
-      <footer className="footer">
-        <div className="footer-content">
-          <p>
-            Built on <strong>Base</strong> • Contracts verified on{" "}
-            <a
-              href="https://basescan.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              BaseScan
-            </a>
-          </p>
-          <div className="footer-links">
-            <a
-              href="https://github.com/AdekunleBamz/ttimelock-based"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Toast Notifications */}
       <ToastContainer toasts={toast.toasts} onDismiss={toast.removeToast} />
