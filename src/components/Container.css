@@ -1,0 +1,15 @@
+.container {
+  width: 100%;
+  padding: 0 16px;
+}
+
+.container-center { margin: 0 auto; }
+
+.container-sm { max-width: 480px; }
+.container-md { max-width: 640px; }
+.container-lg { max-width: 960px; }
+.container-xl { max-width: 1200px; }
+
+@media (max-width: 640px) {
+  .container { padding: 0 12px; }
+}
