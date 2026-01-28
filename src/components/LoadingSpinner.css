@@ -1,0 +1,28 @@
+.loading-spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.loading-spinner {
+  border-radius: 50%;
+  border-width: 3px;
+  border-style: solid;
+  animation: spinner-rotate 0.8s linear infinite;
+}
+
+.loading-spinner-text {
+  color: #a0a0a0;
+  font-size: 0.875rem;
+}
+
+@keyframes spinner-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
