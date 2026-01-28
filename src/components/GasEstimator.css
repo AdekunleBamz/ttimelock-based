@@ -1,0 +1,98 @@
+.gas-estimator {
+  padding: 1rem;
+  background: var(--card-bg, rgba(255, 255, 255, 0.05));
+  border-radius: 12px;
+  border: 1px solid var(--border-color, #374151);
+}
+
+.gas-estimator__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.gas-estimator__title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary, #9ca3af);
+}
+
+.gas-estimator__refresh {
+  background: none;
+  border: none;
+  color: var(--primary-color, #3b82f6);
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.gas-estimator__refresh:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.gas-estimator__options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.gas-estimator__option {
+  flex: 1;
+  padding: 0.75rem;
+  background: var(--input-bg, rgba(255, 255, 255, 0.05));
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.gas-estimator__option:hover {
+  border-color: var(--border-color, #374151);
+}
+
+.gas-estimator__option--selected {
+  border-color: var(--primary-color, #3b82f6);
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.gas-estimator__option-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-secondary, #9ca3af);
+  margin-bottom: 0.25rem;
+}
+
+.gas-estimator__option-value {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary, #fff);
+}
+
+.gas-estimator__option-time {
+  display: block;
+  font-size: 0.625rem;
+  color: var(--text-muted, #6b7280);
+  margin-top: 0.25rem;
+}
+
+.gas-estimator__estimate {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color, #374151);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.gas-estimator__estimate-label {
+  color: var(--text-secondary, #9ca3af);
+}
+
+.gas-estimator__estimate-value {
+  color: var(--text-primary, #fff);
+  font-weight: 500;
+}
