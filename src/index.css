@@ -66,3 +66,24 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Accessibility Focus Indicators */
+:focus-visible {
+  outline: 2px solid #4a9eff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(74, 158, 255, 0.2);
+}
+
+button:focus-visible, 
+a:focus-visible, 
+input:focus-visible, 
+select:focus-visible {
+  outline: 2px solid #4a9eff;
+  outline-offset: 2px;
+}
+
+/* Improve input accessibility */
+input, select, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+}
